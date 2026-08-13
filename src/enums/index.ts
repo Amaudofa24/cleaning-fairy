@@ -1,0 +1,2 @@
+// Export TypeScript enumerations
+export {};

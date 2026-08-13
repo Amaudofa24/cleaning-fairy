@@ -1,0 +1,11 @@
+export * from "./Header";
+export * from "./HeroSection";
+export * from "./WhatWeClean";
+export * from "./HowItWorks";
+export * from "./WhyCleaningFairy";
+export * from "./PricingSection";
+export * from "./CustomerReviews";
+export * from "./FAQSection";
+export * from "./FinalCTA";
+export * from "./Footer";
+export { default as Landing } from "./Landing";

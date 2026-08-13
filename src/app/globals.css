@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fairy-dark: #07090e;
+  --color-fairy-card: #0a0d14;
+  --color-fairy-card-alt: #121826;
+  --color-fairy-darker: #05070a;
+  --color-fairy-emerald: #00e676;
+  --color-fairy-emerald-dark: #00c853;
+  --color-fairy-emerald-hover: #10f085;
+
+  --text-2xs: 0.625rem;
+
+  --spacing-112: 28rem;
+  --spacing-128: 32rem;
+  --spacing-144: 36rem;
+  --spacing-160: 40rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-fairy-dark);
+    color: var(--color-gray-100);
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.glass-card {
+  background: rgba(18, 24, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(26, 35, 54, 0.85);
+  border-color: rgba(0, 230, 118, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px rgba(0, 230, 118, 0.15);
+}
+
+.glass-nav {
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fairy-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 50%, #00e676 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fairy-btn-emerald {
+  background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
+  color: #051a0e;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0, 230, 118, 0.4);
+  transition: all 0.25s ease;
+}
+
+.fairy-btn-emerald:hover {
+  background: linear-gradient(135deg, #10f085 0%, #00e676 100%);
+  box-shadow: 0 6px 28px rgba(0, 230, 118, 0.6);
+  transform: translateY(-2px);
+}
+
+.fairy-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.fairy-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 230, 118, 0.4);
+}
