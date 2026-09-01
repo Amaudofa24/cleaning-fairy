@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   name: "Cleaning Fairy",
   domain: "https://cleaningfairy.com.ng",
   headline: "We make your space feel brand new.",
-  defaultTitle: "Cleaning Fairy | Professional Home & Apartment Cleaning Services in Lagos",
+  defaultTitle: "Cleaning Fairy | Professional Cleaning Services in Lagos",
   titleTemplate: "%s | Cleaning Fairy",
   description:
     "Book trusted, professional home cleaning in Lagos in under 60 seconds. Transparent pricing for standard cleaning, deep cleaning, and move-in/move-out services with instant online booking.",
@@ -48,9 +48,7 @@ export const SHARED_METADATA: Metadata = {
       { url: "/icon.png", type: "image/png" },
       { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: [
-      { url: "/apple-touch-icon.png" },
-    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
   openGraph: {
     type: "website",

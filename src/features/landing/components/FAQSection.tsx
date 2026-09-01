@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChevronDown, Sparkles, HelpCircle } from "lucide-react";
 import { FAQ_ITEMS, IFaqItem } from "../constants";
 
@@ -11,7 +11,7 @@ export const FAQSection = () => {
     <section id="faqs" className="py-24 bg-fairy-dark relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-emerald-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Got Questions?</span>
           </div>
@@ -36,11 +36,11 @@ export const FAQSection = () => {
                   className="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition-colors"
                 >
                   <span className="text-base sm:text-lg font-bold text-white flex items-center gap-3">
-                    <HelpCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                    <HelpCircle className="w-5 h-5 text-teal-400 shrink-0" />
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-emerald-400 shrink-0 transition-transform duration-300 ${
+                    className={`w-5 h-5 text-teal-400 shrink-0 transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />

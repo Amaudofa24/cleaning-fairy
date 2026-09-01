@@ -7,17 +7,17 @@ import { FOOTER_SECTIONS } from "../constants";
 
 export const Footer = () => {
   return (
-    <footer className="bg-fairy-darker text-gray-400 pt-16 pb-12 border-t border-white/10">
+    <footer className="bg-fairy-darker text-gray-400 pt-16 pb-12 border-t border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block">
-              <div className="relative h-16 sm:h-20 w-60 sm:w-72 transition-transform duration-300 hover:scale-105">
+              <div className="relative h-20 sm:h-24 w-64 sm:w-80 transition-transform duration-300 hover:scale-105 origin-left scale-115 sm:scale-125">
                 <Image
-                  src="/assets/imgs/cf-logo-nb.png"
+                  src="/assets/imgs/cf-logo-text-white.png"
                   alt="Cleaning Fairy Logo"
                   fill
-                  className="object-contain object-left brightness-110"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
@@ -25,7 +25,7 @@ export const Footer = () => {
               Not magic. Just perfect cleaning.
             </p>
             <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
-              Digital-first professional home cleaning service across Lagos.
+              Digital-first professional cleaning service across Lagos.
               Book, pay, and get instant confirmation without WhatsApp
               back-and-forth.
             </p>
@@ -35,7 +35,7 @@ export const Footer = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-teal-400 hover:border-teal-500/40 transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export const Footer = () => {
               </a>
               <a
                 href="mailto:hello@cleaningfairy.com"
-                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-teal-400 hover:border-teal-500/40 transition-colors"
                 aria-label="Email Us"
               >
                 <Mail className="w-4 h-4" />
@@ -61,7 +61,7 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-emerald-400 transition-colors"
+                    className="hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -79,14 +79,14 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-emerald-400 transition-colors"
+                    className="hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
               <li>
-                <span className="text-emerald-400 text-xs flex items-center gap-1 font-semibold">
+                <span className="text-teal-400 text-xs flex items-center gap-1 font-semibold">
                   <ShieldCheck className="w-3.5 h-3.5" /> Serving Lagos, NG
                 </span>
               </li>
@@ -102,7 +102,7 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-emerald-400 transition-colors"
+                    className="hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -118,7 +118,7 @@ export const Footer = () => {
           </p>
           <p className="flex items-center gap-1">
             <span>Crafted with</span>
-            <Heart className="w-3 h-3 text-emerald-400 fill-emerald-400" />
+            <Heart className="w-3 h-3 text-teal-400 fill-teal-400" />
             <span>for homes in Lagos</span>
           </p>
         </div>

@@ -5,9 +5,22 @@
   --color-fairy-card: #0a0d14;
   --color-fairy-card-alt: #121826;
   --color-fairy-darker: #05070a;
-  --color-fairy-emerald: #00e676;
-  --color-fairy-emerald-dark: #00c853;
-  --color-fairy-emerald-hover: #10f085;
+  
+  --color-fairy-teal: #1fb5a6;
+  --color-fairy-teal-dark: #0d8f83;
+  --color-fairy-teal-hover: #32d6c6;
+
+  --color-teal-50: #f0faf9;
+  --color-teal-100: #d5f4f0;
+  --color-teal-200: #aee9e2;
+  --color-teal-300: #78d9cf;
+  --color-teal-400: #1fb5a6;
+  --color-teal-500: #1fb5a6;
+  --color-teal-600: #0d8f83;
+  --color-teal-700: #0b776d;
+  --color-teal-800: #085d56;
+  --color-teal-900: #064540;
+  --color-teal-950: #022320;
 
   --text-2xs: 0.625rem;
 
@@ -44,9 +57,9 @@
 
 .glass-card-hover:hover {
   background: rgba(26, 35, 54, 0.85);
-  border-color: rgba(0, 230, 118, 0.3);
+  border-color: rgba(31, 181, 166, 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px -10px rgba(0, 230, 118, 0.15);
+  box-shadow: 0 12px 30px -10px rgba(31, 181, 166, 0.18);
 }
 
 .glass-nav {
@@ -57,22 +70,24 @@
 }
 
 .fairy-gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 50%, #00e676 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 50%, #1fb5a6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.fairy-btn-emerald {
-  background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
-  color: #051a0e;
+.fairy-btn-emerald,
+.fairy-btn-teal {
+  background: linear-gradient(135deg, #1fb5a6 0%, #0d8f83 100%);
+  color: #031c1a;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(0, 230, 118, 0.4);
+  box-shadow: 0 4px 20px rgba(31, 181, 166, 0.4);
   transition: all 0.25s ease;
 }
 
-.fairy-btn-emerald:hover {
-  background: linear-gradient(135deg, #10f085 0%, #00e676 100%);
-  box-shadow: 0 6px 28px rgba(0, 230, 118, 0.6);
+.fairy-btn-emerald:hover,
+.fairy-btn-teal:hover {
+  background: linear-gradient(135deg, #32d6c6 0%, #1fb5a6 100%);
+  box-shadow: 0 6px 28px rgba(31, 181, 166, 0.6);
   transform: translateY(-2px);
 }
 
@@ -85,5 +100,5 @@
 
 .fairy-pill:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(0, 230, 118, 0.4);
+  border-color: rgba(31, 181, 166, 0.4);
 }

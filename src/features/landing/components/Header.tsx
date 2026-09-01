@@ -5,10 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { NAV_LINKS, INavLink } from "../constants";
+import { useBooking } from "@/features/booking";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openBookingModal } = useBooking();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,19 +25,19 @@ export const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "glass-nav py-3 sm:py-4 shadow-2xl shadow-black/50"
-          : "bg-transparent py-5 sm:py-6"
+          ? "glass-nav py-2.5 sm:py-3 shadow-2xl shadow-black/50"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative h-16 sm:h-20 md:h-24 w-60 sm:w-72 md:w-84 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative h-20 sm:h-24 md:h-28 w-64 sm:w-80 md:w-96 transition-transform duration-300 group-hover:scale-110 origin-left scale-115 sm:scale-125">
               <Image
-                src="/assets/imgs/cf-logo-nb.png"
+                src="/assets/imgs/cf-logo-text-white.png"
                 alt="Cleaning Fairy Logo"
                 fill
-                className="object-contain object-left brightness-110"
+                className="object-contain object-left"
                 priority
               />
             </div>
@@ -46,7 +48,7 @@ export const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-300 hover:text-emerald-400 transition-colors"
+                className="text-sm font-medium text-gray-300 hover:text-teal-400 transition-colors"
               >
                 {link.name}
               </a>
@@ -54,13 +56,14 @@ export const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#booking"
-              className="fairy-btn-emerald px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm flex items-center gap-2 group shadow-lg"
+            <button
+              type="button"
+              onClick={() => openBookingModal()}
+              className="fairy-btn-teal px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-sm font-bold flex items-center gap-2 group shadow-lg"
             >
               <span>Book a Cleaning Service</span>
-              <Sparkles className="w-4 h-4 text-emerald-900 group-hover:rotate-12 transition-transform" />
-            </a>
+              <Sparkles className="w-4 h-4 text-teal-950 group-hover:rotate-12 transition-transform" />
+            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -81,21 +84,24 @@ export const Header = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-gray-300 hover:text-emerald-400 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                className="text-base font-medium text-gray-300 hover:text-teal-400 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </nav>
           <div className="pt-2 border-t border-white/10">
-            <a
-              href="#booking"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full fairy-btn-emerald py-3 rounded-xl text-center text-sm font-bold flex items-center justify-center gap-2"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openBookingModal();
+              }}
+              className="w-full fairy-btn-teal py-3 rounded-xl text-center text-sm font-bold flex items-center justify-center gap-2"
             >
               <span>Book a Cleaning Service</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       )}

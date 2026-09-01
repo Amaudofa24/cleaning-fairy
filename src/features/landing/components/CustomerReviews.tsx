@@ -8,12 +8,12 @@ export const CustomerReviews = () => {
     <section id="reviews" className="py-24 bg-fairy-card relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-emerald-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Customer Testimonials</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Loved by Homes Across Lagos
+            Loved by People Across Lagos
           </h2>
           <p className="text-lg text-gray-400">
             See why homeowners and professionals trust Cleaning Fairy for
@@ -29,12 +29,12 @@ export const CustomerReviews = () => {
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-1 text-emerald-400">
+                  <div className="flex items-center gap-1 text-teal-400">
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-emerald-400" />
+                      <Star key={i} className="w-4 h-4 fill-teal-400" />
                     ))}
                   </div>
-                  <Quote className="w-8 h-8 text-white/10 group-hover:text-emerald-500/30 transition-colors" />
+                  <Quote className="w-8 h-8 text-white/10 group-hover:text-teal-500/30 transition-colors" />
                 </div>
 
                 <p className="text-gray-200 text-base italic leading-relaxed mb-8">
@@ -50,7 +50,7 @@ export const CustomerReviews = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-white">{rev.author}</h4>
-                  <div className="flex items-center gap-1 text-xs text-emerald-400">
+                  <div className="flex items-center gap-1 text-xs text-teal-400">
                     <MapPin className="w-3 h-3" />
                     <span>{rev.location}</span>
                   </div>

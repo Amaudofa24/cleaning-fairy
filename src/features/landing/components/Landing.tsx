@@ -11,7 +11,7 @@ import { Footer } from "./Footer";
 
 const Landing = () => {
   return (
-    <div className="min-h-screen bg-fairy-dark text-gray-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-emerald-950">
+    <div className="min-h-screen bg-fairy-dark text-gray-100 flex flex-col font-sans selection:bg-teal-500 selection:text-teal-950">
       <Header />
       <main className="grow">
         <HeroSection />

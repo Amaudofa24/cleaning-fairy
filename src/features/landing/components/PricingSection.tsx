@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Sparkles, Calculator, ArrowRight } from "lucide-react";
 import { PRICING_CONFIG } from "../constants";
+import { useBooking } from "@/features/booking";
 
 type ServiceTypeKey = "standard" | "deep" | "move";
 type HomeSizeKey = "1bed" | "2bed" | "3bed" | "4bed";
@@ -16,6 +17,8 @@ export const PricingSection = () => {
     oven: false,
     balcony: false,
   });
+
+  const { openBookingModal } = useBooking();
 
   const {
     basePrices,
@@ -32,11 +35,16 @@ export const PricingSection = () => {
 
   const totalPrice = basePrice + transportFee + addonsTotal;
 
+  const handleBookConfiguration = () => {
+    const mappedType = serviceType === "move" ? "move-in-out" : serviceType;
+    openBookingModal(mappedType);
+  };
+
   return (
     <section id="pricing" className="py-24 bg-fairy-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-emerald-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Instant Price Calculator</span>
           </div>
@@ -63,7 +71,7 @@ export const PricingSection = () => {
                       onClick={() => setServiceType(item.key)}
                       className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all ${
                         serviceType === item.key
-                          ? "bg-emerald-500 text-emerald-950 border-emerald-400"
+                          ? "bg-teal-500 text-teal-950 border-teal-400"
                           : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
                       }`}
                     >
@@ -84,7 +92,7 @@ export const PricingSection = () => {
                       onClick={() => setHomeSize(item.key)}
                       className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all ${
                         homeSize === item.key
-                          ? "bg-emerald-500 text-emerald-950 border-emerald-400"
+                          ? "bg-teal-500 text-teal-950 border-teal-400"
                           : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
                       }`}
                     >
@@ -110,12 +118,12 @@ export const PricingSection = () => {
                       }
                       className={`py-2.5 px-3 rounded-xl text-xs font-medium border flex items-center justify-between transition-all ${
                         addons[item.key]
-                          ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/50"
+                          ? "bg-teal-500/20 text-teal-300 border-teal-500/50"
                           : "bg-white/5 text-gray-400 border-white/10"
                       }`}
                     >
                       <span>{item.label}</span>
-                      <span className="text-2xs font-bold text-emerald-400">
+                      <span className="text-2xs font-bold text-teal-400">
                         +₦{item.price.toLocaleString()}
                       </span>
                     </button>
@@ -128,10 +136,10 @@ export const PricingSection = () => {
               <div>
                 <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
                   <span className="text-sm font-bold text-white flex items-center gap-2">
-                    <Calculator className="w-4 h-4 text-emerald-400" />
+                    <Calculator className="w-4 h-4 text-teal-400" />
                     Price Summary
                   </span>
-                  <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                  <span className="text-xs text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-500/20">
                     Live Estimate
                   </span>
                 </div>
@@ -146,19 +154,12 @@ export const PricingSection = () => {
                     </span>
                   </div>
 
-                  <div className="flex justify-between">
-                    <span>Transport Fee</span>
-                    <span className="font-semibold text-white">
-                      ₦{transportFee.toLocaleString()}
-                    </span>
-                  </div>
-
                   {addonsList
                     .filter((addon) => addons[addon.key])
                     .map((addon) => (
                       <div
                         key={addon.key}
-                        className="flex justify-between text-emerald-400"
+                        className="flex justify-between text-teal-400"
                       >
                         <span>{addon.label} Add-on</span>
                         <span>₦{addon.price.toLocaleString()}</span>
@@ -177,13 +178,14 @@ export const PricingSection = () => {
                   </span>
                 </div>
 
-                <a
-                  href="#booking"
-                  className="w-full fairy-btn-emerald py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 group"
+                <button
+                  type="button"
+                  onClick={handleBookConfiguration}
+                  className="w-full fairy-btn-teal py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <span>Book This Configuration</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </button>
               </div>
             </div>
           </div>
