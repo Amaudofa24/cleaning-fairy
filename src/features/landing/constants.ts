@@ -236,12 +236,6 @@ export const FAQ_ITEMS: IFaqItem[] = [
   },
   {
     id: "faq-4",
-    question: "What if I need to reschedule?",
-    answer:
-      "You will receive a booking confirmation email with details to manage or reschedule your booking seamlessly prior to your assigned cleaner's arrival.",
-  },
-  {
-    id: "faq-5",
     question: "Is payment secure?",
     answer:
       "Yes. All online payments are handled securely through our encrypted payment gateway (Paystack), ensuring safe card, transfer, or USSD transactions.",
@@ -263,6 +257,5 @@ export const FOOTER_SECTIONS = {
   legal: [
     { label: "Terms of Service", href: "#" },
     { label: "Privacy Policy", href: "#" },
-    { label: "Reschedule Policy", href: "#" },
   ],
 };

@@ -37,8 +37,11 @@ interface BookingContextType {
   formData: IBookingFormData;
   pricing: IPricingBreakdown;
   bookingId: string | null;
+  showExitConfirm: boolean;
   openBookingModal: (initialService?: ServiceType) => void;
   closeBookingModal: () => void;
+  confirmExit: () => void;
+  cancelExit: () => void;
   nextStep: () => void;
   prevStep: () => void;
   goToStep: (step: number) => void;
@@ -59,8 +62,8 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<IBookingFormData>(DEFAULT_FORM_DATA);
   const [bookingId, setBookingId] = useState<string | null>(null);
-
-  const totalSteps = 7; // 1: Service Type, 2: Home Details, 3: Add-ons, 4: Location & Contact, 5: Date & Time, 6: Payment, 7: Confirmation
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const totalSteps = 7;
 
   const pricing = useMemo(() => {
     return calculateBookingPrice(formData);
@@ -70,28 +73,33 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
     if (initialService) {
       setFormData((prev) => ({ ...prev, serviceType: initialService }));
     }
+    setShowExitConfirm(false);
     setIsOpen(true);
   };
 
   const closeBookingModal = () => {
-    // If user has unsaved progress (past step 1 or filled details), confirm before closing
     const isTouched =
       currentStep > 1 ||
       formData.address.trim() !== "" ||
       formData.fullName.trim() !== "" ||
       formData.selectedAddons.length > 0;
 
-    if (
-      isTouched &&
-      currentStep < totalSteps &&
-      !window.confirm(
-        "You have unsaved booking progress. Are you sure you want to close?"
-      )
-    ) {
+    if (isTouched && currentStep < totalSteps) {
+      setShowExitConfirm(true);
       return;
     }
 
     setIsOpen(false);
+    setShowExitConfirm(false);
+  };
+
+  const confirmExit = () => {
+    setShowExitConfirm(false);
+    setIsOpen(false);
+  };
+
+  const cancelExit = () => {
+    setShowExitConfirm(false);
   };
 
   const nextStep = () => {
@@ -130,6 +138,7 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
     setFormData(DEFAULT_FORM_DATA);
     setCurrentStep(1);
     setBookingId(null);
+    setShowExitConfirm(false);
   };
 
   return (
@@ -141,8 +150,11 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
         formData,
         pricing,
         bookingId,
+        showExitConfirm,
         openBookingModal,
         closeBookingModal,
+        confirmExit,
+        cancelExit,
         nextStep,
         prevStep,
         goToStep,

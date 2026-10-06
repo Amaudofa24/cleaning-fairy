@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, ShieldCheck, Heart } from "lucide-react";
 import { FOOTER_SECTIONS } from "../constants";
+import { ThemeToggle } from "@/components/shared";
 
 export const Footer = () => {
   return (
-    <footer className="bg-fairy-darker text-gray-400 pt-16 pb-12 border-t border-white/10 overflow-hidden">
+    <footer className="bg-slate-950 text-slate-400 dark:bg-fairy-darker dark:text-gray-400 pt-16 pb-12 border-t border-slate-800 dark:border-white/10 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800 dark:border-white/10">
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block">
               <div className="relative h-20 sm:h-24 w-64 sm:w-80 transition-transform duration-300 hover:scale-105 origin-left scale-115 sm:scale-125">
@@ -21,10 +22,10 @@ export const Footer = () => {
                 />
               </div>
             </Link>
-            <p className="text-sm text-gray-300 font-medium max-w-sm">
+            <p className="text-sm text-slate-300 font-medium max-w-sm">
               Not magic. Just perfect cleaning.
             </p>
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Digital-first professional cleaning service across Lagos.
               Book, pay, and get instant confirmation without WhatsApp
               back-and-forth.
@@ -61,7 +62,7 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-teal-400 transition-colors"
+                    className="text-slate-400 hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -79,7 +80,7 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-teal-400 transition-colors"
+                    className="text-slate-400 hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -102,7 +103,7 @@ export const Footer = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="hover:text-teal-400 transition-colors"
+                    className="text-slate-400 hover:text-teal-400 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -112,15 +113,18 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>
             © {new Date().getFullYear()} Cleaning Fairy. All rights reserved.
           </p>
-          <p className="flex items-center gap-1">
-            <span>Crafted with</span>
-            <Heart className="w-3 h-3 text-teal-400 fill-teal-400" />
-            <span>for homes in Lagos</span>
-          </p>
+          <div className="flex items-center gap-4">
+            <ThemeToggle variant="pill" />
+            <p className="flex items-center gap-1">
+              <span>Crafted with</span>
+              <Heart className="w-3 h-3 text-teal-400 fill-teal-400" />
+              <span>for homes in Lagos</span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

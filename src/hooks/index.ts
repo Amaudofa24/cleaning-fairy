@@ -1,2 +1,1 @@
-// Export custom React hooks
-export {};
+export { useTheme } from "@/store/context";

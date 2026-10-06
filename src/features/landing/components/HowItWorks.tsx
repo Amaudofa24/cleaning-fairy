@@ -12,17 +12,17 @@ const ICON_MAP = {
 
 export const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-fairy-dark relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-fairy-bg relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Seamless Process</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             How It Works
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-slate-600 dark:text-gray-400">
             Book your professional cleaner in 4 effortless steps.
           </p>
         </div>
@@ -33,22 +33,22 @@ export const HowItWorks = () => {
             return (
               <div
                 key={step.number}
-                className="glass-card rounded-3xl p-8 glass-card-hover relative flex flex-col justify-between border border-white/10 group"
+                className="glass-card rounded-3xl p-8 glass-card-hover relative flex flex-col justify-between border border-slate-200/90 dark:border-white/10 group"
               >
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:bg-teal-500 group-hover:text-teal-950 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white dark:group-hover:text-teal-950 transition-all duration-300">
                     <IconComponent className="w-7 h-7" />
                   </div>
-                  <span className="text-4xl font-extrabold text-gray-700 group-hover:text-teal-500/40 transition-colors">
+                  <span className="text-4xl font-extrabold text-slate-300 dark:text-gray-700 group-hover:text-teal-500/40 transition-colors select-none">
                     {step.number}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">
                     {step.description}
                   </p>
                 </div>

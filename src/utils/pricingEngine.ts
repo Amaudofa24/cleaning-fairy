@@ -181,33 +181,23 @@ export const calculateBookingPrice = (
   const selectedAddons: AddonKey[] = data.selectedAddons || [];
   const area = data.area || "";
 
-  // 1. Base property price
   const basePrice = BASE_PRICES[homeSize][serviceType];
-
-  // 2. Bathroom adjustment (1 bathroom included, extra = ₦3,000 each)
   const extraBathroomCount = Math.max(0, bathrooms - 1);
   const extraBathroomFee = extraBathroomCount * 3000;
 
-  // 3. Add-ons sum
   const addonsTotal = selectedAddons.reduce((sum, key) => {
     const addon = ADDONS_CONFIG.find((a) => a.key === key);
     return sum + (addon ? addon.price : 0);
   }, 0);
 
-  // 4. Transport Fee & Location check
   const { isSupported, fee: transportFee, zone } = getTransportDetails(area);
-
-  // Subtotal (Base + Bathrooms + Addons)
   const subtotal = basePrice + extraBathroomFee + addonsTotal;
 
-  // Frequency Discount (Optional)
   let discountPercent = 0;
   if (data.frequency === "weekly") discountPercent = 0.1;
   else if (data.frequency === "bi-weekly") discountPercent = 0.05;
 
   const discountAmount = Math.round(subtotal * discountPercent);
-
-  // Final Total
   const total = isSupported ? subtotal + transportFee - discountAmount : 0;
 
   return {

@@ -15,10 +15,10 @@ export const Step1ServiceType = () => {
   return (
     <div className="space-y-6">
       <div className="text-center sm:text-left">
-        <h2 className="text-2xl font-bold text-white tracking-tight">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
           What do you need cleaned?
         </h2>
-        <p className="text-sm text-gray-400 mt-1">
+        <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
           Select a service type below to get started. Tapping any card selects it.
         </p>
       </div>
@@ -80,7 +80,7 @@ export const Step1ServiceType = () => {
         <button
           type="button"
           onClick={nextStep}
-          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg"
+          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg cursor-pointer"
         >
           Continue
         </button>

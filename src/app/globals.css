@@ -1,14 +1,41 @@
 @import "tailwindcss";
 
-@theme {
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-fairy-bg: #f8fafc;
+  --color-fairy-dark: #f8fafc;
+  --color-fairy-card: #ffffff;
+  --color-fairy-card-alt: #f1f5f9;
+  --color-fairy-darker: #0b0f19;
+
+  --color-fairy-teal: #0d8f83;
+  --color-fairy-teal-dark: #097268;
+  --color-fairy-teal-hover: #1fb5a6;
+}
+
+.dark {
+  --color-fairy-bg: #07090e;
   --color-fairy-dark: #07090e;
   --color-fairy-card: #0a0d14;
   --color-fairy-card-alt: #121826;
   --color-fairy-darker: #05070a;
-  
+
   --color-fairy-teal: #1fb5a6;
   --color-fairy-teal-dark: #0d8f83;
   --color-fairy-teal-hover: #32d6c6;
+}
+
+@theme {
+  --color-fairy-bg: var(--color-fairy-bg);
+  --color-fairy-dark: var(--color-fairy-dark);
+  --color-fairy-card: var(--color-fairy-card);
+  --color-fairy-card-alt: var(--color-fairy-card-alt);
+  --color-fairy-darker: var(--color-fairy-darker);
+  
+  --color-fairy-teal: var(--color-fairy-teal);
+  --color-fairy-teal-dark: var(--color-fairy-teal-dark);
+  --color-fairy-teal-hover: var(--color-fairy-teal-hover);
 
   --color-teal-50: #f0faf9;
   --color-teal-100: #d5f4f0;
@@ -33,22 +60,36 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  html.dark {
     color-scheme: dark;
   }
 
+  html.light {
+    color-scheme: light;
+  }
+
   body {
-    background-color: var(--color-fairy-dark);
-    color: var(--color-gray-100);
+    background-color: var(--color-fairy-bg);
     font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
+/* Glass Card */
 .glass-card {
-  background: rgba(18, 24, 38, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.dark .glass-card {
+  background: rgba(18, 24, 38, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
 }
 
 .glass-card-hover {
@@ -56,49 +97,101 @@
 }
 
 .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(13, 143, 131, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(13, 143, 131, 0.15);
+}
+
+.dark .glass-card-hover:hover {
   background: rgba(26, 35, 54, 0.85);
   border-color: rgba(31, 181, 166, 0.35);
-  transform: translateY(-4px);
   box-shadow: 0 12px 30px -10px rgba(31, 181, 166, 0.18);
 }
 
+/* Glass Nav */
 .glass-nav {
-  background: rgba(7, 9, 14, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.dark .glass-nav {
+  background: rgba(7, 9, 14, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Glass Pill */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+/* Fairy Gradient Text */
 .fairy-gradient-text {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0d8f83 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .fairy-gradient-text {
   background: linear-gradient(135deg, #ffffff 0%, #d1d5db 50%, #1fb5a6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* Fairy Button */
 .fairy-btn-emerald,
 .fairy-btn-teal {
   background: linear-gradient(135deg, #1fb5a6 0%, #0d8f83 100%);
-  color: #031c1a;
+  color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(31, 181, 166, 0.4);
+  box-shadow: 0 4px 20px rgba(31, 181, 166, 0.35);
   transition: all 0.25s ease;
+}
+
+.dark .fairy-btn-emerald,
+.dark .fairy-btn-teal {
+  color: #031c1a;
+  box-shadow: 0 4px 20px rgba(31, 181, 166, 0.4);
 }
 
 .fairy-btn-emerald:hover,
 .fairy-btn-teal:hover {
   background: linear-gradient(135deg, #32d6c6 0%, #1fb5a6 100%);
-  box-shadow: 0 6px 28px rgba(31, 181, 166, 0.6);
+  box-shadow: 0 6px 28px rgba(31, 181, 166, 0.5);
   transform: translateY(-2px);
 }
 
+/* Fairy Pill */
 .fairy-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(12px);
   transition: all 0.2s ease;
 }
 
+.dark .fairy-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .fairy-pill:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(13, 143, 131, 0.4);
+}
+
+.dark .fairy-pill:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(31, 181, 166, 0.4);
 }

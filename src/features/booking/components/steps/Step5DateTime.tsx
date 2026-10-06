@@ -1,123 +1,160 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useFormik } from "formik";
 import { useBooking } from "@/store/context/BookingContext";
-import { Calendar as CalendarIcon, Clock } from "lucide-react";
+import { step5DateTimeValidation } from "@/validations";
+import {
+  getTomorrowDateString,
+  time24To12,
+  time12To24,
+} from "@/utils/misc";
+import { Input } from "@/components/shared";
+import { Calendar, Clock, Sparkles } from "lucide-react";
 
-const TIME_SLOTS = [
+const PRESET_TIME_SLOTS = [
   "8:00 AM",
   "10:00 AM",
   "12:00 PM",
   "2:00 PM",
+  "4:00 PM",
 ];
 
 export const Step5DateTime = () => {
   const { formData, updateFormData, nextStep, prevStep } = useBooking();
-  const [error, setError] = useState("");
 
-  // Get tomorrow's date string formatted as YYYY-MM-DD for min date
   const tomorrowStr = React.useMemo(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split("T")[0];
+    return getTomorrowDateString();
   }, []);
 
-  const handleNext = () => {
-    if (!formData.date) {
-      setError("Please select a date for your cleaning.");
-      return;
+  const formik = useFormik({
+    initialValues: {
+      date: formData.date,
+      timeSlot: formData.timeSlot,
+    },
+    validationSchema: step5DateTimeValidation,
+    onSubmit: (values) => {
+      updateFormData(values);
+      nextStep();
+    },
+  });
+
+  const handleCustomTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawVal = e.target.value;
+    if (rawVal) {
+      const formatted = time24To12(rawVal);
+      formik.setFieldValue("timeSlot", formatted);
+      updateFormData({ timeSlot: formatted });
     }
-    if (!formData.timeSlot) {
-      setError("Please select an available time slot.");
-      return;
-    }
-    setError("");
-    nextStep();
   };
 
+  const handlePresetSelect = (slot: string) => {
+    formik.setFieldValue("timeSlot", slot);
+    updateFormData({ timeSlot: slot });
+  };
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const dateVal = e.target.value;
+    formik.setFieldValue("date", dateVal);
+    updateFormData({ date: dateVal });
+  };
+
+  const currentTime24 = time12To24(formik.values.timeSlot);
+
   return (
-    <div className="space-y-6">
+    <form onSubmit={formik.handleSubmit} className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-white tracking-tight">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
           When should your Fairy arrive?
         </h2>
-        <p className="text-sm text-gray-400 mt-1">
-          Pick your preferred date and time slot for cleaner arrival.
+        <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
+          Pick your preferred date and specify an arrival time for your cleaner.
         </p>
       </div>
 
-      {/* Date Picker */}
-      <div className="space-y-3">
-        <label className="text-xs font-semibold text-gray-300 uppercase tracking-wider block">
-          Select Date *
-        </label>
-        <div className="relative">
-          <input
-            type="date"
-            min={tomorrowStr}
-            value={formData.date}
-            onChange={(e) => {
-              setError("");
-              updateFormData({ date: e.target.value });
-            }}
-            className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:outline-none focus:border-teal-400"
+      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-3">
+        <Input
+          formik={formik}
+          name="date"
+          type="date"
+          label="1. Select Date"
+          min={tomorrowStr}
+          onChange={handleDateChange}
+          icon={<Calendar className="w-4 h-4 text-teal-600 dark:text-teal-400" />}
+          required
+        />
+      </div>
+
+      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider flex items-center gap-2">
+            <Clock className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+            <span>2. Select or Pick Arrival Time *</span>
+          </div>
+          {formik.values.timeSlot && (
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-500/15 text-teal-800 dark:text-teal-300 border border-teal-500/30 animate-in fade-in duration-200">
+              <Sparkles className="w-3 h-3 text-teal-600 dark:text-teal-400" />
+              <span>Selected: {formik.values.timeSlot}</span>
+            </span>
+          )}
+        </div>
+
+        <div>
+          <span className="text-xs text-slate-500 dark:text-gray-400 block mb-2 font-medium">
+            Quick slots:
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            {PRESET_TIME_SLOTS.map((slot) => {
+              const isSelected = formik.values.timeSlot === slot;
+              return (
+                <button
+                  type="button"
+                  key={slot}
+                  onClick={() => handlePresetSelect(slot)}
+                  className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    isSelected
+                      ? "bg-teal-500 text-white dark:text-teal-950 border-teal-400 shadow-md shadow-teal-500/10"
+                      : "bg-white dark:bg-white/5 text-slate-700 dark:text-gray-200 border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/30 hover:bg-slate-100 dark:hover:bg-white/10"
+                  }`}
+                >
+                  <span>{slot}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="pt-3 border-t border-slate-200/80 dark:border-white/10">
+          <Input
+            name="timeSlot"
+            type="time"
+            label="Or pick a custom time"
+            value={currentTime24}
+            onChange={handleCustomTimeChange}
+            onBlur={formik.handleBlur}
+            step="900"
+            helperText="Tip: Cleaners are available between 7:00 AM and 6:00 PM daily."
+            error={formik.touched.timeSlot && formik.errors.timeSlot ? formik.errors.timeSlot : undefined}
           />
         </div>
       </div>
 
-      {/* Time Slot Picker */}
-      <div className="space-y-3">
-        <label className="text-xs font-semibold text-gray-300 uppercase tracking-wider block">
-          Available Time Slots *
-        </label>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {TIME_SLOTS.map((slot) => {
-            const isSelected = formData.timeSlot === slot;
-            return (
-              <button
-                type="button"
-                key={slot}
-                onClick={() => {
-                  setError("");
-                  updateFormData({ timeSlot: slot });
-                }}
-                className={`py-3.5 px-3 rounded-xl text-sm font-bold border transition-all flex items-center justify-center gap-2 ${
-                  isSelected
-                    ? "bg-teal-500 text-teal-950 border-teal-400 shadow-md shadow-teal-500/10"
-                    : "bg-white/5 text-gray-200 border-white/10 hover:border-white/30 hover:bg-white/10"
-                }`}
-              >
-                <Clock className="w-4 h-4" />
-                <span>{slot}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {error && (
-        <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium">
-          {error}
-        </div>
-      )}
-
-      <div className="pt-4 flex items-center justify-between">
+      <div className="pt-2 flex items-center justify-between">
         <button
           type="button"
           onClick={prevStep}
-          className="px-6 py-2.5 rounded-full text-sm font-semibold text-gray-300 hover:text-white bg-white/5 border border-white/10"
+          className="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 cursor-pointer"
         >
           Back
         </button>
 
         <button
-          type="button"
-          onClick={handleNext}
-          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg"
+          type="submit"
+          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg cursor-pointer"
         >
           Continue
         </button>
       </div>
-    </div>
+    </form>
   );
 };

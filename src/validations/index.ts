@@ -1,2 +1,1 @@
-// Export Yup validation schemas
-export {};
+export * from "./booking.validation";

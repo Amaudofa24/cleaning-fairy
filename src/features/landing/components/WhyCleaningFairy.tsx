@@ -14,17 +14,17 @@ const ICON_MAP = {
 
 export const WhyCleaningFairy = () => {
   return (
-    <section id="why-us" className="py-24 bg-fairy-card relative">
+    <section id="why-us" className="py-24 bg-slate-50/70 dark:bg-fairy-card relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>The Cleaning Fairy Difference</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             Why Cleaning Fairy
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-slate-600 dark:text-gray-400">
             Built for convenient, frictionless cleaning across Lagos.
           </p>
         </div>
@@ -35,27 +35,27 @@ export const WhyCleaningFairy = () => {
             return (
               <div
                 key={item.id}
-                className="glass-card rounded-3xl p-8 glass-card-hover border border-white/10 flex flex-col justify-between group"
+                className="glass-card rounded-3xl p-8 glass-card-hover border border-slate-200/90 dark:border-white/10 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform">
                       <IconComponent className="w-7 h-7" />
                     </div>
-                    <span className="text-xs font-bold text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+                    <span className="text-xs font-bold text-teal-700 dark:text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
                       {item.highlight}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                  <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-semibold text-teal-400">
+                <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center gap-2 text-xs font-semibold text-teal-700 dark:text-teal-400">
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Guaranteed quality experience</span>
                 </div>

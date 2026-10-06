@@ -41,27 +41,27 @@ export const PricingSection = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 bg-fairy-dark relative">
+    <section id="pricing" className="py-24 bg-fairy-bg relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-teal-500/20">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Instant Price Calculator</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             Transparent Pricing Upfront
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-slate-600 dark:text-gray-400">
             No WhatsApp quotes or surprises. Configure your estimate in
             real-time.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+        <div className="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 border border-slate-200/90 dark:border-white/10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-3">
+                <label className="text-xs font-semibold text-slate-700 dark:text-gray-400 uppercase tracking-wider block mb-3">
                   1. Select Service Type
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -69,10 +69,10 @@ export const PricingSection = () => {
                     <button
                       key={item.key}
                       onClick={() => setServiceType(item.key)}
-                      className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer ${
                         serviceType === item.key
-                          ? "bg-teal-500 text-teal-950 border-teal-400"
-                          : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
+                          ? "bg-teal-500 text-teal-950 border-teal-400 shadow-sm"
+                          : "bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-300 border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/30 hover:bg-slate-200/70 dark:hover:bg-white/10"
                       }`}
                     >
                       {item.label}
@@ -82,7 +82,7 @@ export const PricingSection = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-3">
+                <label className="text-xs font-semibold text-slate-700 dark:text-gray-400 uppercase tracking-wider block mb-3">
                   2. Select Home Size
                 </label>
                 <div className="grid grid-cols-4 gap-2">
@@ -90,10 +90,10 @@ export const PricingSection = () => {
                     <button
                       key={item.key}
                       onClick={() => setHomeSize(item.key)}
-                      className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all ${
+                      className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         homeSize === item.key
-                          ? "bg-teal-500 text-teal-950 border-teal-400"
-                          : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30"
+                          ? "bg-teal-500 text-teal-950 border-teal-400 shadow-sm"
+                          : "bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-300 border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/30 hover:bg-slate-200/70 dark:hover:bg-white/10"
                       }`}
                     >
                       {item.label}
@@ -103,7 +103,7 @@ export const PricingSection = () => {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-3">
+                <label className="text-xs font-semibold text-slate-700 dark:text-gray-400 uppercase tracking-wider block mb-3">
                   3. Optional Extra Add-ons (✨)
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -116,14 +116,14 @@ export const PricingSection = () => {
                           [item.key]: !prev[item.key],
                         }))
                       }
-                      className={`py-2.5 px-3 rounded-xl text-xs font-medium border flex items-center justify-between transition-all ${
+                      className={`py-2.5 px-3 rounded-xl text-xs font-medium border flex items-center justify-between transition-all cursor-pointer ${
                         addons[item.key]
-                          ? "bg-teal-500/20 text-teal-300 border-teal-500/50"
-                          : "bg-white/5 text-gray-400 border-white/10"
+                          ? "bg-teal-500/15 text-teal-900 dark:text-teal-300 border-teal-500/50 shadow-xs"
+                          : "bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-400 border-slate-200 dark:border-white/10 hover:bg-slate-200/70 dark:hover:bg-white/10"
                       }`}
                     >
-                      <span>{item.label}</span>
-                      <span className="text-2xs font-bold text-teal-400">
+                      <span className="font-semibold">{item.label}</span>
+                      <span className="text-2xs font-bold text-teal-600 dark:text-teal-400">
                         +₦{item.price.toLocaleString()}
                       </span>
                     </button>
@@ -132,9 +132,9 @@ export const PricingSection = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white/5 rounded-2xl p-6 border border-white/10 flex flex-col justify-between h-full">
+            <div className="lg:col-span-5 bg-slate-900 text-white dark:bg-white/5 rounded-2xl p-6 border border-slate-800 dark:border-white/10 flex flex-col justify-between h-full shadow-lg">
               <div>
-                <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-800 dark:border-white/10 mb-4">
                   <span className="text-sm font-bold text-white flex items-center gap-2">
                     <Calculator className="w-4 h-4 text-teal-400" />
                     Price Summary
@@ -146,7 +146,7 @@ export const PricingSection = () => {
 
                 <div className="space-y-2.5 text-xs sm:text-sm text-gray-300">
                   <div className="flex justify-between">
-                    <span className="capitalize">
+                    <span className="capitalize text-gray-300">
                       {serviceType} Cleaning ({homeSize})
                     </span>
                     <span className="font-semibold text-white">
@@ -168,7 +168,7 @@ export const PricingSection = () => {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-white/10">
+              <div className="pt-6 mt-6 border-t border-slate-800 dark:border-white/10">
                 <div className="flex justify-between items-baseline mb-6">
                   <span className="text-sm font-semibold text-gray-400">
                     Estimated Total:
