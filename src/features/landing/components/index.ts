@@ -8,4 +8,5 @@ export * from "./CustomerReviews";
 export * from "./FAQSection";
 export * from "./FinalCTA";
 export * from "./Footer";
+export * from "./PolicyModal";
 export { default as Landing } from "./Landing";

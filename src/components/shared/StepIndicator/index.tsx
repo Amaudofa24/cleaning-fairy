@@ -12,13 +12,13 @@ interface StepIndicatorProps {
 const StepIndicator: React.FC<StepIndicatorProps> = ({
   currentStep,
   totalSteps,
-  activeColor = "bg-[#040404]",
-  inactiveColor = "bg-[#D9D9D9]",
+  activeColor = "bg-teal-500 dark:bg-teal-400",
+  inactiveColor = "bg-slate-200 dark:bg-white/10",
   className = "",
   variant = "progress",
 }) => {
   return (
-    <div className={`flex items-center gap-4 ${className}`}>
+    <div className={`flex items-center gap-1.5 sm:gap-2.5 ${className}`}>
       {Array.from({ length: totalSteps }).map((_, index) => {
         const stepNum = index + 1;
         const isActive =
@@ -28,7 +28,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
         return (
           <div
             key={index}
-            className={`w-5 h-2 rounded-full transition-all duration-300 ${
+            className={`w-3.5 sm:w-5 h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
               isActive ? activeColor : inactiveColor
             }`}
           />

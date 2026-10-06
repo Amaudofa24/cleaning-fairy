@@ -38,6 +38,8 @@ interface BookingContextType {
   pricing: IPricingBreakdown;
   bookingId: string | null;
   showExitConfirm: boolean;
+  isTrackingOpen: boolean;
+  trackingBookingId: string | null;
   openBookingModal: (initialService?: ServiceType) => void;
   closeBookingModal: () => void;
   confirmExit: () => void;
@@ -49,6 +51,8 @@ interface BookingContextType {
   toggleAddon: (key: AddonKey) => void;
   resetBooking: () => void;
   setBookingConfirmed: (id: string) => void;
+  openTrackingModal: (id?: string) => void;
+  closeTrackingModal: () => void;
 }
 
 const BookingContext = createContext<BookingContextType | undefined>(
@@ -63,6 +67,8 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
   const [formData, setFormData] = useState<IBookingFormData>(DEFAULT_FORM_DATA);
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
+  const [trackingBookingId, setTrackingBookingId] = useState<string | null>(null);
   const totalSteps = 7;
 
   const pricing = useMemo(() => {
@@ -141,6 +147,19 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
     setShowExitConfirm(false);
   };
 
+  const openTrackingModal = (id?: string) => {
+    if (id) {
+      setTrackingBookingId(id);
+    } else if (bookingId) {
+      setTrackingBookingId(bookingId);
+    }
+    setIsTrackingOpen(true);
+  };
+
+  const closeTrackingModal = () => {
+    setIsTrackingOpen(false);
+  };
+
   return (
     <BookingContext.Provider
       value={{
@@ -151,6 +170,8 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
         pricing,
         bookingId,
         showExitConfirm,
+        isTrackingOpen,
+        trackingBookingId,
         openBookingModal,
         closeBookingModal,
         confirmExit,
@@ -162,6 +183,8 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({
         toggleAddon,
         resetBooking,
         setBookingConfirmed,
+        openTrackingModal,
+        closeTrackingModal,
       }}
     >
       {children}

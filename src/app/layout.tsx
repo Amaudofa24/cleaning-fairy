@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SHARED_METADATA, CleaningFairyJsonLd } from "@/seo";
-import { BookingProvider, BookingModal } from "@/features/booking";
+import { BookingProvider, BookingModal, TrackingModal } from "@/features/booking";
 import { ThemeProvider } from "@/store/context";
 import "./globals.css";
 
@@ -61,6 +61,7 @@ export default function RootLayout({
             <CleaningFairyJsonLd />
             {children}
             <BookingModal />
+            <TrackingModal />
           </BookingProvider>
         </ThemeProvider>
       </body>

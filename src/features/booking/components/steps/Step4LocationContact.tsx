@@ -65,21 +65,21 @@ export const Step4LocationContact = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="space-y-6 max-h-[480px] overflow-y-auto pr-1"
+      className="space-y-4 sm:space-y-6 max-h-form-mobile sm:max-h-form-desktop overflow-y-auto pr-1"
     >
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+        <h2 className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
           Where should we send your Fairy — and who should they ask for?
         </h2>
       </div>
 
-      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-4">
-        <div className="flex items-center gap-2 text-teal-700 dark:text-teal-400 font-bold text-sm uppercase tracking-wider">
-          <MapPin className="w-4 h-4" />
+      <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-3 sm:space-y-4">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-teal-700 dark:text-teal-400 font-bold text-xs sm:text-sm uppercase tracking-wider">
+          <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>Section A — Location</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div className="sm:col-span-2">
             <Input
               formik={formik}
@@ -125,13 +125,13 @@ export const Step4LocationContact = () => {
         </div>
       </div>
 
-      <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-4">
-        <div className="flex items-center gap-2 text-teal-700 dark:text-teal-400 font-bold text-sm uppercase tracking-wider">
-          <User className="w-4 h-4" />
+      <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 space-y-3 sm:space-y-4">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-teal-700 dark:text-teal-400 font-bold text-xs sm:text-sm uppercase tracking-wider">
+          <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span>Section B — Your Details</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div className="sm:col-span-2">
             <Input
               formik={formik}
@@ -179,18 +179,18 @@ export const Step4LocationContact = () => {
         </div>
       </div>
 
-      <div className="pt-2 flex items-center justify-between">
+      <div className="pt-2 sm:pt-4 flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={prevStep}
-          className="px-6 py-2.5 rounded-full text-sm font-semibold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 cursor-pointer"
+          className="px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 cursor-pointer"
         >
           Back
         </button>
 
         <button
           type="submit"
-          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg cursor-pointer"
+          className="fairy-btn-teal px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-lg cursor-pointer"
         >
           Continue
         </button>

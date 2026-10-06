@@ -1,4 +1,4 @@
-export type ServiceType = "standard" | "deep" | "move-in-out";
+export type ServiceType = "standard" | "deep" | "move-in-out" | "commercial";
 
 export type HomeSize = "1bed" | "2bed" | "3bed" | "4bed" | "5bed" | "duplex";
 

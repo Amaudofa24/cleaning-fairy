@@ -13,17 +13,17 @@ export const Step1ServiceType = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="text-center sm:text-left">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="text-left">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
           What do you need cleaned?
         </h2>
-        <p className="text-sm text-slate-600 dark:text-gray-400 mt-1">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mt-1">
           Select a service type below to get started. Tapping any card selects it.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <ExpandableServiceCard
           id="standard"
           title="Standard Cleaning"
@@ -74,13 +74,29 @@ export const Step1ServiceType = () => {
             "Final move-ready walkthrough check",
           ]}
         />
+
+        <ExpandableServiceCard
+          id="commercial"
+          title="Commercial Cleaning"
+          subtitle="Offices, Airbnb, restaurants & customized facilities."
+          isSelected={formData.serviceType === "commercial"}
+          onSelect={handleSelect}
+          featuresHeader="Consultation & Tailored Proposal"
+          features={[
+            "Custom cleaning schedule & dedicated scope",
+            "Offices, studios, co-working & facilities",
+            "Airbnb, hotel apartments & short-let turnaround",
+            "Restaurants, commercial kitchens & venues",
+            "Tailored volume pricing & invoice support",
+          ]}
+        />
       </div>
 
-      <div className="pt-4 flex justify-end">
+      <div className="pt-2 sm:pt-4 flex justify-end">
         <button
           type="button"
           onClick={nextStep}
-          className="fairy-btn-teal px-8 py-3 rounded-full text-sm font-bold shadow-lg cursor-pointer"
+          className="w-full sm:w-auto fairy-btn-teal px-8 py-3 rounded-full text-xs sm:text-sm font-bold shadow-lg cursor-pointer text-center"
         >
           Continue
         </button>

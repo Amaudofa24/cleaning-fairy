@@ -107,7 +107,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
 
         {helperText && !hasError && (
-          <p className="text-[11px] text-slate-500 dark:text-gray-400 mt-1">
+          <p className="text-xs-plus text-slate-500 dark:text-gray-400 mt-1">
             {helperText}
           </p>
         )}

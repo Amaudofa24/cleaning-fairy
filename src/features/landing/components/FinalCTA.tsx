@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowUpRight } from "lucide-react";
 import { useBooking } from "@/features/booking";
 
 export const FinalCTA = () => {
@@ -9,36 +9,41 @@ export const FinalCTA = () => {
   return (
     <section
       id="booking"
-      className="py-24 bg-slate-50/70 dark:bg-fairy-card relative overflow-hidden transition-colors duration-300"
+      className="py-10 sm:py-24 bg-fairy-bg dark:bg-fairy-dark relative overflow-hidden transition-colors duration-300"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div className="rounded-2xl sm:rounded-3xl p-5 sm:p-12 md:p-16 bg-fairy-deep text-white shadow-2xl relative overflow-hidden border border-white/10">
+          <div className="absolute inset-0 diamond-pattern opacity-60 pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-fairy-teal/15 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div className="glass-card rounded-3xl p-8 sm:p-16 border border-teal-500/30 bg-linear-to-b from-teal-50/60 to-white dark:from-white/5 dark:to-teal-950/20 shadow-2xl relative overflow-hidden">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400 text-xs sm:text-sm font-semibold mb-6 border border-teal-500/20">
-            <Sparkles className="w-4 h-4" />
-            <span>Instant Online Booking</span>
-          </div>
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 border border-white/15 text-2xs sm:text-sm font-semibold mb-3 sm:mb-6 backdrop-blur-md text-fairy-teal">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Instant Online Booking</span>
+            </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
-            Ready to come home to a <br className="hidden sm:inline" />
-            <span className="fairy-gradient-text">clean space?</span>
-          </h2>
+            <h2 className="text-xl xs:text-2xl sm:text-4xl md:text-6xl font-black text-white tracking-tight leading-tight mb-3 sm:mb-6">
+              Ready to come home to a <br className="hidden sm:inline" />
+              <span className="text-fairy-teal">clean space?</span>
+            </h2>
 
-          <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            No phone calls, no WhatsApp back-and-forth. Just instant,
-            transparent home cleaning booked in under 60 seconds.
-          </p>
+            <p className="text-xs sm:text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-5 sm:mb-10 leading-relaxed font-normal">
+              No phone calls, no WhatsApp back-and-forth. Just instant,
+              transparent home cleaning booked in under 60 seconds.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => openBookingModal()}
-              className="w-full sm:w-auto fairy-btn-teal px-10 py-4 rounded-full text-base font-extrabold flex items-center justify-center gap-3 group shadow-2xl cursor-pointer"
-            >
-              <span>Book a Cleaning Service</span>
-              <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => openBookingModal()}
+                className="w-full sm:w-auto group inline-flex items-center justify-between sm:justify-center gap-2 sm:gap-3 bg-white hover:bg-slate-100 text-fairy-deep font-extrabold pl-4 sm:pl-8 pr-2 sm:pr-3 py-2.5 sm:py-3.5 rounded-full shadow-2xl transition-all cursor-pointer hover:scale-105"
+              >
+                <span className="text-xs sm:text-base">Book a Cleaning Service</span>
+                <div className="w-7 sm:w-10 h-7 sm:h-10 rounded-full bg-fairy-teal flex items-center justify-center text-white group-hover:rotate-45 transition-transform shadow-xs">
+                  <ArrowUpRight className="w-3.5 sm:w-5 h-3.5 sm:h-5 stroke-2" />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

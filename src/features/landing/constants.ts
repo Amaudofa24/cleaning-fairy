@@ -83,6 +83,9 @@ export const NAV_LINKS: INavLink[] = [
   { name: "Pricing", href: "#pricing" },
 ];
 
+export const COMMERCIAL_CALENDLY_URL =
+  "https://calendly.com/cleanfairy-info/commercial-cleaning";
+
 export const CLEANING_SERVICES: ICleaningService[] = [
   {
     id: "residential",
@@ -114,21 +117,21 @@ export const HOW_IT_WORKS_STEPS: IHowItWorksStep[] = [
   {
     number: "02",
     title: "Pick a date and time",
-    description: "Choose from real, available slots based on cleaner capacity.",
+    description: "Choose from real, available slots (minimum 48h notice, up to 90 days in advance).",
     icon: "Calendar",
   },
   {
     number: "03",
-    title: "Pay securely online",
+    title: "Pay securely via Paystack",
     description:
-      "See your full price breakdown before you pay. No hidden costs.",
+      "See your full price breakdown before you pay. No hidden costs or surprise invoices.",
     icon: "CreditCard",
   },
   {
     number: "04",
     title: "Relax, your Fairy is on the way",
     description:
-      "Get instant confirmation and real-time updates for your cleaning.",
+      "Get instant email confirmation and live cleaner assignment tracking for your booking.",
     icon: "Smile",
   },
 ];
@@ -224,21 +227,33 @@ export const FAQ_ITEMS: IFaqItem[] = [
   },
   {
     id: "faq-2",
-    question: "What areas do you currently serve?",
+    question: "What is your booking notice period?",
     answer:
-      "We currently serve major residential and commercial hubs across Lagos, including Lekki Phase 1 & 2, Ikoyi, Victoria Island, Yaba, Ikeja, Surulere, and surrounding neighborhoods. Enter your address during checkout to confirm instant coverage.",
+      "We require a minimum of 48 hours advance notice to assign your vetted cleaner, confirm equipment availability, and arrange logistics. You can schedule cleanings up to 90 days in advance.",
   },
   {
     id: "faq-3",
-    question: "Can I book recurring cleanings?",
+    question: "What is your cancellation and refund policy?",
     answer:
-      "Yes! You can choose one-time, weekly, every 2 weeks, or monthly frequencies during checkout to keep your home consistently fresh with preferred scheduling.",
+      "Cancellations made more than 24 hours before your appointment receive a 100% refund. Cancellations between 12 and 24 hours receive a 50% refund. Cancellations under 12 hours are non-refundable. If a cleaner ever fails to show up, you receive a guaranteed 100% refund or free rebooking.",
   },
   {
     id: "faq-4",
-    question: "Is payment secure?",
+    question: "Can I reschedule my booking?",
     answer:
-      "Yes. All online payments are handled securely through our encrypted payment gateway (Paystack), ensuring safe card, transfer, or USSD transactions.",
+      "Yes! Free rescheduling is available if requested at least 12 hours prior to your scheduled appointment. Rescheduling requested under 12 hours incurs a standard ₦5,000 late logistics fee.",
+  },
+  {
+    id: "faq-5",
+    question: "What happens if there is property damage or loss?",
+    answer:
+      "In the rare event of damage or loss, customers must report the incident within 24 hours of service. Our operations team guarantees investigation resolution within 5 business days.",
+  },
+  {
+    id: "faq-6",
+    question: "How does payment work?",
+    answer:
+      "All payments are handled securely through our Paystack integration using debit/credit cards or dedicated virtual bank transfer accounts.",
   },
 ];
 
@@ -250,12 +265,16 @@ export const FOOTER_SECTIONS = {
     { label: "Customer Reviews", href: "#reviews" },
   ],
   support: [
+    { label: "Track My Booking", action: "track-booking" },
     { label: "FAQs", href: "#faqs" },
-    { label: "Contact Us", href: "mailto:hello@cleaningfairy.com" },
     { label: "Transparent Pricing", href: "#pricing" },
+    { label: "Contact Us", href: "mailto:hello@cleaningfairy.com.ng" },
   ],
   legal: [
-    { label: "Terms of Service", href: "#" },
-    { label: "Privacy Policy", href: "#" },
+    { label: "Cancellation & Refund Policy", policy: "cancellation" as const },
+    { label: "Rescheduling Policy", policy: "rescheduling" as const },
+    { label: "Damage & Loss Policy", policy: "damage" as const },
+    { label: "Booking Notice Period", policy: "notice" as const },
+    { label: "Terms of Service", policy: "terms" as const },
   ],
 };

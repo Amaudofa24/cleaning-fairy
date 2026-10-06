@@ -51,7 +51,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   };
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 dark:bg-black/80 backdrop-blur-sm rounded-3xl animate-in fade-in duration-200">
+    <div className="absolute inset-0 z-dialog flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 dark:bg-black/80 backdrop-blur-sm rounded-3xl animate-in fade-in duration-200">
       <div
         className="w-full max-w-md p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/15 shadow-2xl text-center space-y-4 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}

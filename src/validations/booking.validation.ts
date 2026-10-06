@@ -1,8 +1,5 @@
 import * as Yup from "yup";
 
-/**
- * Validation schema for Step 4 (Location & Contact Details)
- */
 export const step4LocationContactValidation = Yup.object().shape({
   address: Yup.string().trim().required("Address is required."),
   area: Yup.string().trim().required("Area is required."),
@@ -20,17 +17,11 @@ export const step4LocationContactValidation = Yup.object().shape({
   customerNote: Yup.string().optional(),
 });
 
-/**
- * Validation schema for Step 5 (Date & Time)
- */
 export const step5DateTimeValidation = Yup.object().shape({
   date: Yup.string().required("Please select a date for your cleaning."),
   timeSlot: Yup.string().required("Please select or pick an arrival time slot."),
 });
 
-/**
- * Comprehensive Validation schema for the complete Booking Form
- */
 export const bookingValidationSchema = Yup.object().shape({
   serviceType: Yup.string()
     .oneOf(["standard", "deep", "move-in-out"], "Invalid service type")

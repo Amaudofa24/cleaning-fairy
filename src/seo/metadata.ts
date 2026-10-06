@@ -3,11 +3,14 @@ import type { Metadata } from "next";
 export const SITE_CONFIG = {
   name: "Cleaning Fairy",
   domain: "https://cleaningfairy.com.ng",
-  headline: "We make your space feel brand new.",
-  defaultTitle: "Cleaning Fairy | Professional Cleaning Services in Lagos",
+  headline: "Not magic. Just perfect cleaning.",
+  defaultTitle: "Cleaning Fairy | Professional Home & Commercial Cleaning in Lagos",
   titleTemplate: "%s | Cleaning Fairy",
   description:
-    "Book trusted, professional home cleaning in Lagos in under 60 seconds. Transparent pricing for standard cleaning, deep cleaning, and move-in/move-out services with instant online booking.",
+    "Book trusted, vetted home and commercial cleaning in Lagos in under 60 seconds. 100% upfront pricing for standard cleaning, deep cleaning, and move-in/move-out services with instant online booking.",
+  phone: "+23480000FAIRY",
+  displayPhone: "+234 (0) 800 FAIRY",
+  email: "hello@cleaningfairy.com.ng",
   keywords: [
     "Cleaning Fairy",
     "home cleaning service Lagos",
@@ -16,13 +19,18 @@ export const SITE_CONFIG = {
     "apartment cleaning Nigeria",
     "move-in cleaning Lagos",
     "move-out cleaning Lagos",
-    "professional maid service Lagos",
+    "commercial cleaning Lagos",
+    "office cleaning Victoria Island",
+    "professional cleaner Ikoyi",
+    "maid service Lagos",
     "book home cleaning online",
     "residential cleaning service",
     "recurring home cleaning",
     "Lekki home cleaners",
     "Ikoyi house cleaning",
     "Victoria Island cleaning service",
+    "Yaba apartment cleaning",
+    "Ikeja residential cleaners",
   ],
 };
 
@@ -42,13 +50,20 @@ export const SHARED_METADATA: Metadata = {
   ],
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
-  category: "Home Services",
+  applicationName: SITE_CONFIG.name,
+  category: "Home & Commercial Cleaning Services",
+  classification: "Business, Home Services, Professional Cleaning",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
       { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: [{ url: "/apple-touch-icon.png" }],
+    apple: [{ url: "/apple-icon.png" }],
   },
   openGraph: {
     type: "website",
@@ -57,14 +72,6 @@ export const SHARED_METADATA: Metadata = {
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
     locale: "en_NG",
-    images: [
-      {
-        url: `${SITE_CONFIG.domain}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Cleaning Fairy - Professional Home Cleaning Services in Lagos",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -72,7 +79,6 @@ export const SHARED_METADATA: Metadata = {
     description: SITE_CONFIG.description,
     creator: "@cleaningfairy",
     site: "@cleaningfairy",
-    images: [`${SITE_CONFIG.domain}/og-image.png`],
   },
   robots: {
     index: true,
@@ -87,5 +93,11 @@ export const SHARED_METADATA: Metadata = {
   },
   alternates: {
     canonical: "/",
+  },
+  other: {
+    "geo.region": "NG-LA",
+    "geo.placename": "Lagos",
+    "geo.position": "6.45407;3.39467",
+    "ICBM": "6.45407, 3.39467",
   },
 };

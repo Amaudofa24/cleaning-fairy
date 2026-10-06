@@ -9,7 +9,10 @@ import {
   IPricingBreakdown,
 } from "@/types/booking";
 
-export const BASE_PRICES: Record<HomeSize, Record<ServiceType, number>> = {
+export const BASE_PRICES: Record<
+  HomeSize,
+  Record<Exclude<ServiceType, "commercial">, number>
+> = {
   "1bed": {
     standard: 18000,
     deep: 35000,
@@ -155,7 +158,7 @@ export const getTransportDetails = (
   areaName: string
 ): { isSupported: boolean; fee: number; zone: string | null } => {
   if (!areaName || !areaName.trim()) {
-    return { isSupported: true, fee: 3000, zone: "Z5" }; // Default initial estimate until customer specifies area
+    return { isSupported: true, fee: 3000, zone: "Z5" };
   }
 
   const query = areaName.trim().toLowerCase();
@@ -181,7 +184,12 @@ export const calculateBookingPrice = (
   const selectedAddons: AddonKey[] = data.selectedAddons || [];
   const area = data.area || "";
 
-  const basePrice = BASE_PRICES[homeSize][serviceType];
+  const basePrice =
+    serviceType === "commercial"
+      ? 0
+      : BASE_PRICES[homeSize]?.[
+          serviceType as Exclude<ServiceType, "commercial">
+        ] || 0;
   const extraBathroomCount = Math.max(0, bathrooms - 1);
   const extraBathroomFee = extraBathroomCount * 3000;
 
